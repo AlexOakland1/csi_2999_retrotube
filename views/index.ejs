@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="en">
+<!-- This is an HTML comment tag -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Retrotube's Home Page">
+  <meta name="keywords" content="HTML, DOM, HTML tags, attributes">
+  <meta name="author" content="CSI-2999-2022-Group1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Retrotube</title>
+
+  <!-- Other info like CSS and Scripts go here-->
+</head>
+
+<body>
+  <h1>Welcome to Retrotube!</h1>
+  <form action="[_InsertJavascripFuncHere?_]">
+    <label for="videouploadbutton">Upload a video!</label><br>
+    <input type="file" id="uservideoinput" name="videouploadbutton"><br><br>
+    <input type="submit" value="Confirm Upload">
+  </form>
+
+  <!-->If you click the "Submit" button,
+the form-data should activate our custom javascript
+function that in turn, should upload it to a database!".<!-->
+
+</body>
+
 </html>
