@@ -1,31 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- This is an HTML comment tag -->
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Retrotube's Home Page">
-  <meta name="keywords" content="HTML, DOM, HTML tags, attributes">
-  <meta name="author" content="CSI-2999-2022-Group1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Retrotube</title>
-
-  <!-- Other info like CSS and Scripts go here-->
-</head>
-
-<body>
-  <h1>Welcome to <%= title %>!</h1>
-  <form action="[_InsertJavascripFuncHere?_]">
-    <label for="videouploadbutton">Upload a video!</label><br>
-    <input type="file" id="uservideoinput" name="videouploadbutton"><br><br>
-    <input type="submit" value="Confirm Upload">
-  </form>
-
-  <!-->If you click the "Submit" button,
-the form-data should activate our custom javascript
-function that in turn, should upload it to a database!".<!-->
-
-</body>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" contents="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Retrotube</title>
+        <link rel="stylesheet" href="../public/css/style.css">
+    </head>
+    <body>
+        <!--header-->
+        <nav class="flex-div">
+            <div class="nav-left flex-div">
+                <img src="../public/img/emenu.png" class="menu-icon">
+                <img src="../public/img/elogo.png" class="logo-icon">
+            </div>
+            <div class="nav-middle flex-div">
+                <div class="search-box flex-div">
+                    <input type="text" placeholder="Search">
+                    <img src="../public/img/esearch.png" class="search-icon">
+                </div>
+            </div>
+            <div class="nav-right flex-div">
+                <img src="../public/img/eupload.png" class="upload-icon">
+                <img src="../public/img/emore.png">
+                <img src="../public/img/enotification.png">
+                <img src="../public/img/eprofile.png" class="user-icon">
+            </div>
+        </nav>
+        <!--sidebar-->
+        <div class="sidebar">
+            <div class="shortcut-links">
+                <a href=""><img src="../public/img/ehome.png"><p>Home</p></a>
+                <a href=""><img src="../public/img/etrending.png"><p>Trending</p></a>
+                <a href=""><img src="../public/img/esubscription.png"><p>Subscriptions</p></a>
+                <a href=""><img src="../public/img/elibrary.png"><p>Library</p></a>
+                <a href=""><img src="../public/img/ehistory.png"><p>History</p></a>
+                <a href=""><img src="../public/img/eplaylist.png"><p>Playlists</p></a>
+                <a href=""><img src="../public/img/emessages.png"><p>Messages</p></a>
+                <a href=""><img src="../public/img/eshowmore.png"><p>Show More</p></a>
+                <hr>
+            </div>
+            <div class="subscribed-list">
+                <h3>SUBSCRIBED</h3>
+                <a href=""><img src="../public/img/eprofile.png"><p>Profile Name 1</p></a>
+                <a href=""><img src="../public/img/eprofile.png"><p>Profile Name 2</p></a>
+                <a href=""><img src="../public/img/eprofile.png"><p>Profile Name 3</p></a>
+                <a href=""><img src="../public/img/eprofile.png"><p>Profile Name 4</p></a>
+                <a href=""><img src="../public/img/eprofile.png"><p>Profile Name 5</p></a>
+            </div>
+        </div>
+        <!--main-->
+        <div class="container">
+            <div class="list-container">
+                <div class="vid-list">
+                    <a href="player.ejs"><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
+                    <div class="flex-div">
+                        <img src="../public/img/eprofile.png">
+                        <div class="vid-info">
+                            <a href="player.ejs">Video Title 1</a>
+                            <p>Profile Name 1</p>
+                            <p>15k views &bull; 2 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="vid-list">
+                    <a href=""><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
+                    <div class="flex-div">
+                        <img src="../public/img/eprofile.png">
+                        <div class="vid-info">
+                            <a href="">Video Title 1</a>
+                            <p>Profile Name 1</p>
+                            <p>15k views &bull; 2 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="vid-list">
+                    <a href=""><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
+                    <div class="flex-div">
+                        <img src="../public/img/eprofile.png">
+                        <div class="vid-info">
+                            <a href="">Video Title 1</a>
+                            <p>Profile Name 1</p>
+                            <p>15k views &bull; 2 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="vid-list">
+                    <a href=""><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
+                    <div class="flex-div">
+                        <img src="../public/img/eprofile.png">
+                        <div class="vid-info">
+                            <a href="">Video Title 1</a>
+                            <p>Profile Name 1</p>
+                            <p>15k views &bull; 2 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="vid-list">
+                    <a href=""><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
+                    <div class="flex-div">
+                        <img src="../public/img/eprofile.png">
+                        <div class="vid-info">
+                            <a href="">Video Title 1</a>
+                            <p>Profile Name 1</p>
+                            <p>15k views &bull; 2 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="vid-list">
+                    <a href=""><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
+                    <div class="flex-div">
+                        <img src="../public/img/eprofile.png">
+                        <div class="vid-info">
+                            <a href="">Video Title 1</a>
+                            <p>Profile Name 1</p>
+                            <p>15k views &bull; 2 days</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../public/js/script.js"></script>
+    </body>
 </html>

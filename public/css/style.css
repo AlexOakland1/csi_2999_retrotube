@@ -1,14 +1,300 @@
-body{
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 2;
-    background-size: 100% 2pt, 3pt 100%;
-    /*
-    code modified from https://aleclownes.com/2017/02/01/crt-display.html
-    */
-    background-color: rgb(33, 36, 33);
-    color: rgb(153, 255, 0);
-    font-size: 16pt;
-    font-family: "Terminus (TTF)", 'Courier New', Courier, monospace, "Font Awesome 5 Free" !important; 
-    src: url(../fonts/TerminusTTF-4.49.1.ttf)
-    
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: #5a5a5a;
+}
+img{
+    cursor: pointer;
+}
+.flex-div{
+    display: flex;
+    align-items: center;
+}
+nav{
+    padding: 10px 2%;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.nav-left .menu-icon{
+    width: 30px;
+    margin-right: 30px;
+}
+.nav-left .logo-icon{
+    width: 200px;
+}
+.nav-middle .search-box{
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 25px;
+}
+.nav-middle .search-box input{
+    width: 400px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+.nav-middle .search-box .search-icon{
+    width: 10px;
+}
+.nav-right img{
+    width: 20px;
+    margin-right: 30px;
+}
+.nav-right .upload-icon{
+    width: 30px;
+}
+.nav-right .user-icon{
+    width: 25px;
+    border: 1px solid rgb( 0, 0, 0);
+    border-radius: 50%;
+    margin-right: 0;
+}
+.sidebar{
+    background: #fff;
+    width: 15%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    padding-left: 2%;
+    padding-top: 80px;
+}
+.shortcut-links a img{
+    width: 20px;
+    margin-right: 20px;
+}
+.shortcut-links a{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: fit-content;
+    flex-wrap: wrap;
+}
+.sidebar hr{
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    width: 75%;
+}
+.subscribed-list h3{
+    font-size: 13px;
+    margin: 20px 0;
+    color: #5a5a5a;
+}
+.subscribed-list a{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: fit-content;
+    flex-wrap: wrap;
+}
+.subscribed-list a img{
+    width: 20px;
+    border: 1px solid rgb( 0, 0, 0);
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.small-sidebar{
+    width: 5%;
+}
+.small-sidebar a p{
+    display: none;
+}
+.small-sidebar h3{
+    display: none;
+}
+.small-sidebar hr{
+    width: 35%;
+    margin-bottom: 25px;
+}
+.container{
+    background: #f9f9f9;
+    padding-left: 17%;
+    padding-right: 2%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.large-container{
+    padding-left: 7%;
+}
+.list-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap: 16px;
+    grid-row-gap: 30px;
+    margin-top: 15px;
+}
+.vid-list .thumbnail{
+    width: 100%;
+    border-radius: 5px;
+}
+.vid-list .flex-div{
+    align-items: flex-start;
+    margin-top: 7px;
+}
+.vid-list .flex-div img{
+    width: 35px;
+    border: 1px solid rgb( 0, 0, 0);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.vid-info{
+    color: #5a5a5a;
+    font-size: 13px;
+}
+.vid-info a{
+    color: #000;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.play-container{
+    padding-left: 2%;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.player{
+    flex-basis: 74%;
+}
+.right-sidebar{
+    flex-basis: 24%;
+}
+.player video{
+    width: 100%;
+}
+.side-video-list{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.side-video-list img{
+    width: 100%;
+}
+.side-video-list .small-thumbnail{
+    flex-basis: 49%;
+}
+.side-video-list .vid-info{
+    flex-basis: 49%;
+}
+.player h3{
+    flex: 1;
+    font-weight: 600;
+    font-size: 36px;
+}
+.player .rating img{
+    width: 25px;
+}
+.player .player-vid-info{
+    flex: 1;
+}
+.player .user-icon{
+    width: 35px;
+    border: 1px solid rgb( 0, 0, 0);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.player .show-description-icon{
+    width: 15px;
+    margin-right: 10px;
+}
+.player .hide-description-icon{
+    rotate: 180deg;
+}
+.player .save{
+    width: 15px;
+    margin-right: 10px;
+}
+.player .share{
+    width: 20px;
+    margin-right: 10px;
+}
+.player .subscribe{
+    width: 80px;
+    margin-right: 0;
+}
+.description{
+    display: none;
+}
+.show-description{
+    display: inline;
+    align-items: center;
+}
+.player .description-text{
+    color: #5a5a5a;
+    font-size: 13px;
+    margin-top: 10px;
+}
+.player .tags{
+    margin-top: 10px;
+}
+.player .tags a{
+    color: #0000ff;
+    font-size: 13px;
+}
+.player hr{
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 10px 0;
+}
+.player h4{
+    margin-bottom: 10px;
+}
+.player .add-comment img{
+    width: 30px;
+    border: 1px solid rgb( 0, 0, 0);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.player .add-comment input{
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    padding-top: 10px;
+    background: transparent;
+}
+.player .comments{
+    display: flex;
+    margin: 30px 0;
+}
+.player .comments img{
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgb( 0, 0, 0);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.player .comments h3{
+    font-size: 13px;
+    color: #5a5a5a;
+    margin-bottom: 2px;
+}
+.player .comments p{
+    font-size: 13px;
+    color: #5a5a5a;
+}
+.player .comments .replies{
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+.player .comments .replies .reply{
+    margin-right: 20px;
+}
+.player .comments .replies a{
+    font-size: 13px;
+    color: #0000ff;
 }
