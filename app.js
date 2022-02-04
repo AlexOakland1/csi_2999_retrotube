@@ -27,6 +27,10 @@ app.get("/", (req, res) => {
   res.render("index", {error: 0});
 });
 
+app.get("/player", (req, res) => {
+  res.render("player");
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
