@@ -31,6 +31,10 @@ app.get("/player", (req, res) => {
   res.render("player");
 });
 
+app.get("/upload", (req, res) => {
+  res.render("upload");
+});
+
 //upload file api
 app.post('/uploadfile',upload_file);
 
