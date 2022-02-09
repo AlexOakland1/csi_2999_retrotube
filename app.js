@@ -36,7 +36,7 @@ app.get("/upload", (req, res) => {
 });
 
 //upload file api
-app.post('/uploadfile',upload_file);
+app.post('/upload_file',upload_file);
 
 function upload_file(req, res, next){
    if(req.method == "POST") {
@@ -73,9 +73,9 @@ function upload_file(req, res, next){
 }
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//  next(createError(404));
+// });
 
 // error handler
 app.use(function(err, req, res, next) {
