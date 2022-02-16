@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var formidable = require('formidable');
+var fs = require('fs');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -45,14 +48,14 @@ function upload_file(req, res, next){
       // specify that we want to allow the user to upload multiple files in a single request
       form.multiples = true;
       // store all uploads in the /uploads directory
-      form.uploadDir = path.basename(path.dirname('../public/videos'))
+      form.uploadDir = path.basename(path.dirname("../public/videos"))
       // every time a file has been uploaded successfully,
       // rename it to it's orignal name
       form.on('file', function(field, file) {
         fs.rename(file.path, path.join(form.uploadDir, file.name), function(err){
             if (err) throw err;
             //console.log('renamed complete: '+file.name);
-            const file_path = '..public/videos/'+file.name
+            const file_path = "../public/videos/"+file.name
         });
       });
       // log any errors that occur
