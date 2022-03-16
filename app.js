@@ -5,8 +5,16 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var multer = require('multer');
-var upload = multer({dest: './public/videos'})
-var uuid = require('uuid').v4;
+var storage = multer.diskStorage({
+  destination: (req,file,cb) =>{
+    cb(null, './public/videos');
+  },
+  filename: (req, file, cb) => {
+    var {originalname} = file;
+    cb(null,originalname);
+  }
+});
+var upload = multer({storage});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
