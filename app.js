@@ -3,6 +3,35 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var { Connection, Request } = require("tedious");
+
+const config = {
+  authentication: {
+    options: {
+      userName: "csi2999group1", // update me
+      password: "GqShujLq0fFMYV8A" // update me
+    },
+    type: "default"
+  },
+  server: "retrotube-csi2999.database.windows.net", // update me
+  options: {
+    database: "retrotube", //update me
+    encrypt: true
+  }
+};
+
+const connection = new Connection(config);
+
+connection.on("connect", err => {
+  if (err) {
+    console.error(err.message);
+    console.log("aaaa");
+  } else {
+    console.log("it working :)");
+  }
+});
+
+connection.connect();
 
 var multer = require('multer');
 var storage = multer.diskStorage({
@@ -49,6 +78,10 @@ app.get("/upload", (req, res) => {
 
 //upload file api
 app.post("/uploadthis", upload.single('UploadVideo'), (req, res) => {
+  let ts = Date.now();
+  let data = { name: 'TEST', vid_desc: 'TEST2', upload_date: ts, file_name:req.file.filename };
+  console.log(req.file.filename);
+  //console.log(res.req);
   return res.json({status: 'OK'});
 });
 

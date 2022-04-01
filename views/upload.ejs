@@ -27,14 +27,32 @@
                 <img src="../public/img/eprofile.png" class="user-icon">
             </div>
         </nav>
+        <!--sidebar-->
+        <div class="sidebar">
+            <div class="shortcut-links">
+                <a href=""><img src="../public/img/ehome.png"><p>Home</p></a>
+                <a href=""><img src="../public/img/etrending.png"><p>Trending</p></a>
+                <a href=""><img src="../public/img/esubscription.png"><p>Subscriptions</p></a>
+                <a href=""><img src="../public/img/elibrary.png"><p>Library</p></a>
+                <a href=""><img src="../public/img/ehistory.png"><p>History</p></a>
+                <a href=""><img src="../public/img/eplaylist.png"><p>Playlists</p></a>
+                <a href=""><img src="../public/img/emessages.png"><p>Messages</p></a>
+                <a href=""><img src="../public/img/eshowmore.png"><p>Show More</p></a>
+                <hr>
+            </div>
+            <div class="subscribed-list">
+                <h3>SUBSCRIBED</h3>
+                <a href=""><img src="../public/img/eprofile.png"><p>Profile Name 1</p></a>
+                <a href=""><img src="../public/img/eprofile.png"><p>Profile Name 2</p></a>
+                <a href=""><img src="../public/img/eprofile.png"><p>Profile Name 3</p></a>
+                <a href=""><img src="../public/img/eprofile.png"><p>Profile Name 4</p></a>
+                <a href=""><img src="../public/img/eprofile.png"><p>Profile Name 5</p></a>
+            </div>
+        </div>
         <!--main-->
         <div class="container">
           <form action="/uploadthis" method = "post" enctype="multipart/form-data">
-            <input type="file" name="UploadVideo"><br><br>
-            <input type="text" id="VideoTitle" name="VideoTitle" value="Video Title"><br><br>
-            <textarea id="VideoDescription" name="VideoDescription" rows="4" cols="50">
-                Add your video Description here!
-              </textarea><br><br>
+            <input type="file" name="UploadVideo">
             <input type="submit" value="Upload">
           </form>
         </div>
