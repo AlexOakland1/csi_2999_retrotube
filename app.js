@@ -33,6 +33,9 @@ connection.on("connect", err => {
 
 connection.connect();
 
+//max filesize is 1gb
+const maxSize = 1000 * 1000 * 1000;
+
 var multer = require('multer');
 var storage = multer.diskStorage({
   destination: (req,file,cb) =>{
@@ -40,10 +43,13 @@ var storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     var {originalname} = file;
-    cb(null,originalname);
+    cb(null, Date.now() + '-' + originalname);
   }
 });
-var upload = multer({storage});
+var upload = multer({
+  storage: storage,
+  limits: { fileSize: maxSize }
+});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -73,15 +79,43 @@ app.get("/player", (req, res) => {
 });
 
 app.get("/upload", (req, res) => {
-  res.render("upload");
+  res.render("upload", {error: 0});
 });
+
+//database connection test
+var request = require('tedious').Request  
+var TYPES = require('tedious').TYPES;  
 
 //upload file api
 app.post("/uploadthis", upload.single('UploadVideo'), (req, res) => {
-  let ts = Date.now();
-  let data = { name: 'TEST', vid_desc: 'TEST2', upload_date: ts, file_name:req.file.filename };
-  console.log(req.file.filename);
-  //console.log(res.req);
+  let date_ob = new Date();
+  let date = ("0" + date_ob.getDate()).slice(-2);
+  let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+  let year = date_ob.getFullYear();
+  request = new Request("INSERT INTO video (vid_name, vid_desc, upload_date, file_name) OUTPUT INSERTED.id VALUES (@Name, @Desc, @Date, @Filename);", function(err) {  
+    if (err) {  
+       console.log(err);}
+       res.render("index", {error: 1});  
+   });
+   request.addParameter('Name', TYPES.NVarChar, req.body.name);  
+   request.addParameter('Desc', TYPES.NVarChar , req.body.vid_desc);  
+   request.addParameter('Date', TYPES.Date, year + "-" + month + "-" + date);  
+   request.addParameter('Filename', TYPES.NVarChar, Date.now() + '-' + req.file.filename);  
+   request.on('row', function(columns) {  
+             columns.forEach(function(column) {  
+               if (column.value === null) {  
+                 console.log('NULL');  
+               } else {  
+                 console.log("Product id of inserted item is " + column.value);  
+               }  
+             });  
+         });
+ 
+   // Close the connection after the final event emitted by the request, after the callback passes
+   request.on("requestCompleted", function (rowCount, more) {
+       connection.close();
+   });
+   connection.execSql(request);  
   return res.json({status: 'OK'});
 });
 
