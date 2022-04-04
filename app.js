@@ -51,8 +51,9 @@ var upload = multer({
   limits: { fileSize: maxSize }
 });
 
-var indexRouter = require('./routes/index');
+//var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const { title } = require('process');
 
 var app = express();
 
@@ -66,12 +67,41 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/public", express.static(__dirname + "/public"));
 
+function consoleLog() {
+  console.log("another test");
+}
+
+function renderHome(req, res) {const request = new Request(
+  `SELECT vid_name FROM video`,
+  (err, rowCount) => {
+    if (err) {
+      console.error(err.message);
+    } else {
+      console.log(`${rowCount} row(s) returned`);
+      res.render("index", {data: titles});
+    }
+  }
+);
+var titles = [];
+request.on("row", columns => {
+  columns.forEach(column => {
+    console.log("%s\t%s", column.metadata.colName, column.value);
+    titles.push(column.value);
+    console.log(titles);
+  });
+});
+
+console.log(titles);
+connection.execSql(request);
+//res.render("index", {data: titles});
+consoleLog();}
+
 app.get("/", (req, res) => {
-  res.render("index", {error: 0});
+  renderHome(req, res);
 });
 
 app.get("/player", (req, res) => {
@@ -79,6 +109,8 @@ app.get("/player", (req, res) => {
 });
 
 app.get("/upload", (req, res) => {
+  console.log("test");
+  consoleLog();
   res.render("upload", {error: 0});
 });
 
@@ -95,7 +127,7 @@ app.post("/uploadthis", upload.single('UploadVideo'), (req, res) => {
   request = new Request("INSERT INTO video (vid_name, vid_desc, upload_date, file_name) OUTPUT INSERTED.id VALUES (@Name, @Desc, @Date, @Filename);", function(err) {  
     if (err) {  
        console.log(err);}
-       res.render("index", {error: 1});  
+       res.render("upload", {error: 1});  
    });
    request.addParameter('Name', TYPES.NVarChar, req.body.name);  
    request.addParameter('Desc', TYPES.NVarChar , req.body.vid_desc);  
@@ -117,6 +149,7 @@ app.post("/uploadthis", upload.single('UploadVideo'), (req, res) => {
    });
    connection.execSql(request);  
   return res.json({status: 'OK'});
+  renderHome();
 });
 
 // catch 404 and forward to error handler
