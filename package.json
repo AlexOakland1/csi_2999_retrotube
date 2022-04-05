@@ -9,18 +9,18 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "ffmpeg-static": "^5.0.0",
     "fluent-ffmpeg": "^2.1.2",
     "get-video-duration": "^4.0.0",
-    "http-errors": "^1.6.3",
+    "http-errors": "^1.8.1",
     "morgan": "~1.9.1",
     "mssql": "^8.0.2",
     "multer": "^1.4.4",
     "mysql": "^2.18.1",
     "node-ffprobe-installer": "^1.2.3",
     "nodemon": "^2.0.15",
-    "pg": "^8.7.1",
+    "pg": "^8.7.3",
     "tedious": "^14.4.0"
   }
 }

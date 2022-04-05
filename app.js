@@ -20,37 +20,41 @@ const config = {
   }
 };
 
-const executeSQL = (sql, callback) => {
+var executeSQL = (query, callback) => new Promise(
+  (resolve, reject) => {
   let connection = new Connection(config);
   connection.connect((err) => {
     if (err)
       return callback(err, null);
-    const request = new Request(sql, (err, rowCount, rows) => {
-      connection.close();
-      if (err)
-        return callback(err, null);
-      callback(null, {rowCount, rows});
+      const request = new Request(query, (err) => {
+        if (err) {
+            reject(err);
+        } else {
+            resolve(callback);
+        }       
     });
     connection.execSql(request);
   });
-};
-
-executeSQL("SELECT * FROM video", (err, {rowCount, rows}) => {
-  if (err)
-    console.error(err);
-  console.log(rowCount);
-  console.log(rows);
-  var titles = [];
-request.on("row", columns => {
-  columns.forEach(column => {
-    console.log("%s\t%s", column.metadata.colName, column.value);
-    titles.push(column.value);
-    console.log(titles);
-  });
 });
+
+executeSQL("SELECT * FROM video", (err, {rowCount, rows}))
+  .then(ok =>{
+    console.log(rowCount);
+    console.log(rows);
+    var titles = [];
+  request.on("row", columns => {
+    columns.forEach(column => {
+      console.log("%s\t%s", column.metadata.colName, column.value);
+      titles.push(column.value);
+      console.log(titles);
+      });
+    });
+  })
+  .catch(err => {
+    console.error(err);
+  });
 
 console.log(titles);
-});
 
 //const connection = new Connection(config);
 
