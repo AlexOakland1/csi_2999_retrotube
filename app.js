@@ -20,18 +20,50 @@ const config = {
   }
 };
 
-const connection = new Connection(config);
+const executeSQL = (sql, callback) => {
+  let connection = new Connection(config);
+  connection.connect((err) => {
+    if (err)
+      return callback(err, null);
+    const request = new Request(sql, (err, rowCount, rows) => {
+      connection.close();
+      if (err)
+        return callback(err, null);
+      callback(null, {rowCount, rows});
+    });
+    connection.execSql(request);
+  });
+};
 
-connection.on("connect", err => {
-  if (err) {
-    console.error(err.message);
-    console.log("aaaa");
-  } else {
-    console.log("it working :)");
-  }
+executeSQL("SELECT * FROM video", (err, {rowCount, rows}) => {
+  if (err)
+    console.error(err);
+  console.log(rowCount);
+  console.log(rows);
+  var titles = [];
+request.on("row", columns => {
+  columns.forEach(column => {
+    console.log("%s\t%s", column.metadata.colName, column.value);
+    titles.push(column.value);
+    console.log(titles);
+  });
 });
 
-connection.connect();
+console.log(titles);
+});
+
+//const connection = new Connection(config);
+
+// connection.on("connect", err => {
+//   if (err) {
+//     console.error(err.message);
+//     console.log("aaaa");
+//   } else {
+//     console.log("it working :)");
+//   }
+// });
+
+// connection.connect();
 
 //max filesize is 1gb
 const maxSize = 1000 * 1000 * 1000;
