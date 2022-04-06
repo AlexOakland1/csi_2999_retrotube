@@ -298,3 +298,15 @@ nav{
     font-size: 13px;
     color: #0000ff;
 }
+.upload{
+    cursor: pointer;
+    display: block;
+    background: red;
+    padding: 1px 30px;
+    border-radius: 5px;
+    margin: 10px 0px;
+    transition: all 0.3s ease;
+}
+.filechosen{
+    background: red;
+}
