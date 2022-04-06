@@ -40,13 +40,10 @@ app.use("/public", express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
   var videos = fs.readdirSync('./public/videos');
-  console.log(videos);
   res.render("index", {videos: videos});
 });
 
 app.get("/player", (req, res) => {
-  console.log(req.query);
-  console.log(req.query.file);
   res.render("player", {video: req.query.file});
 });
 

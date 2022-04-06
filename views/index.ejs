@@ -52,77 +52,19 @@
         <!--main-->
         <div class="container">
             <div class="list-container">
+                <%videos.forEach((video)=>{%>
                 <div class="vid-list">
-                    <a href="/player"><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
+                    <a href="/player?file=<%=video%>"><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
                     <div class="flex-div">
                         <img src="../public/img/eprofile.png">
                         <div class="vid-info">
-                            <a href="/player">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
-                        </div>
-                    </div>
-                    <ul class="list-group">
-                        <%videos.forEach((video)=>{%>
-                        <a href="/player?file=<%=video%>"><class="upload-icon"><%=video%></a>
-                        <%});%>
-                    </ul>
-                </div>
-                <div class="vid-list">
-                    <a href=""><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
-                    <div class="flex-div">
-                        <img src="../public/img/eprofile.png">
-                        <div class="vid-info">
-                            <a href="">Video Title 1</a>
+                            <a href="/player?file=<%=video%>"><%=video%></a>
                             <p>Profile Name 1</p>
                             <p>15k views &bull; 2 days</p>
                         </div>
                     </div>
                 </div>
-                <div class="vid-list">
-                    <a href=""><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
-                    <div class="flex-div">
-                        <img src="../public/img/eprofile.png">
-                        <div class="vid-info">
-                            <a href="">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="vid-list">
-                    <a href=""><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
-                    <div class="flex-div">
-                        <img src="../public/img/eprofile.png">
-                        <div class="vid-info">
-                            <a href="">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="vid-list">
-                    <a href=""><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
-                    <div class="flex-div">
-                        <img src="../public/img/eprofile.png">
-                        <div class="vid-info">
-                            <a href="">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="vid-list">
-                    <a href=""><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
-                    <div class="flex-div">
-                        <img src="../public/img/eprofile.png">
-                        <div class="vid-info">
-                            <a href="">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
-                        </div>
-                    </div>
-                </div>
+                <%});%>
             </div>
         </div>
         <script src="../public/js/script.js"></script>
