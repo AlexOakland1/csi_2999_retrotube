@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var fs = require('fs');
+// var videos = fs.readdirSync('./public/videos');
+// console.log(videos);
 
 var multer = require('multer');
 var storage = multer.diskStorage({
@@ -31,16 +34,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/public", express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
-  res.render("index", {error: 0});
+  var videos = fs.readdirSync('./public/videos');
+  console.log(videos);
+  res.render("index", {videos: videos});
 });
 
 app.get("/player", (req, res) => {
-  res.render("player");
+  console.log(req.query);
+  console.log(req.query.file);
+  res.render("player", {video: req.query.file});
 });
 
 app.get("/upload", (req, res) => {
@@ -49,7 +56,9 @@ app.get("/upload", (req, res) => {
 
 //upload file api
 app.post("/uploadthis", upload.single('UploadVideo'), (req, res) => {
-  return res.json({status: 'OK'});
+  var videos = fs.readdirSync('./public/videos');
+  console.log(videos);
+  res.render("index", {videos: videos});
 });
 
 // catch 404 and forward to error handler
