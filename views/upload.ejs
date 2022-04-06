@@ -53,14 +53,7 @@
         <div class="container">
           <form action="/uploadthis" method = "post" enctype="multipart/form-data">
             <input type="file" name="UploadVideo">
-            <input type="text" name="name" placeholder="Enter your video's title"><br>
-            <input type="text" name="vid_desc" placeholder="Enter your video's description"><br>
             <input type="submit" value="Upload">
-
-            <p>Only mp4, webm, and mov files supported.</p>
-            <% if (error == 1) { %>
-                <p> Something went wrong! Please make sure you uploaded a video file and entered a title in.</p>
-            <%}%>
           </form>
         </div>
         <script src="../public/js/script.js"></script>
