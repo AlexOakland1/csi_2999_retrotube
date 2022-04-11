@@ -40,11 +40,15 @@ app.use("/public", express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
   var videos = fs.readdirSync('./public/videos');
+  videos.forEach(video => {
+    console.log(video);
+  });
   res.render("index", {videos: videos});
 });
 
 app.get("/player", (req, res) => {
-  res.render("player", {video: req.query.file});
+  var videos = fs.readdirSync('./public/videos');
+  res.render("player", {load: req.query.file, videos: videos});
 });
 
 app.get("/upload", (req, res) => {
@@ -54,7 +58,6 @@ app.get("/upload", (req, res) => {
 //upload file api
 app.post("/uploadthis", upload.single('UploadVideo'), (req, res) => {
   var videos = fs.readdirSync('./public/videos');
-  console.log(videos);
   res.render("index", {videos: videos});
 });
 

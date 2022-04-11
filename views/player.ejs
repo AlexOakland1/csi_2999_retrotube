@@ -11,39 +11,39 @@
         <!--header-->
         <nav class="flex-div">
             <div class="nav-left flex-div">
-                <img src="../public/img/emenu.png" class="menu-icon">
-                <img src="../public/img/elogo.png" class="logo-icon">
+                <!-- <img src="../public/img/emenu.png" class="menu-icon"> -->
+                <a href="/"><img src="../public/img/elogo.png" class="logo-icon">
             </div>
-            <div class="nav-middle flex-div">
+            <!-- <div class="nav-middle flex-div">
                 <div class="search-box flex-div">
                     <input type="text" placeholder="Search">
                     <img src="../public/img/esearch.png" class="search-icon">
                 </div>
-            </div>
+            </div> -->
             <div class="nav-right flex-div">
-                <img src="../public/img/eupload.png" class="upload-icon">
-                <img src="../public/img/emore.png">
+                <a href="/upload"><img src="../public/img/eupload.png" class="upload-icon">Upload</a>
+                <!-- <img src="../public/img/emore.png">
                 <img src="../public/img/enotification.png">
-                <img src="../public/img/eprofile.png" class="user-icon">
+                <img src="../public/img/eprofile.png" class="user-icon"> -->
             </div>
         </nav>
         <div class="container play-container">
             <div class="row">
                 <div class="player">
                     <video controls autoplay>
-                        <source src="../public/videos/<%=video%>">
+                        <source src="../public/videos/<%=load%>">
                     </video>
                     <div class="flex-div">
-                        <h3><%=video%></h3>
-                        <a href="" class="rating">
+                        <h3><%=load%></h3>
+                        <!-- <a href="" class="rating">
                             <img src="../public/img/estar.png">
                             <img src="../public/img/estar.png">
                             <img src="../public/img/estar.png">
                             <img src="../public/img/estar.png">
                             <img src="../public/img/estaroutline.png">
-                        </a>
+                        </a> -->
                     </div>
-                    <div class="flex-div">
+                    <!-- <div class="flex-div">
                         <div class="player-vid-info flex-div">
                             <img src="../public/img/eprofile.png" class="user-icon">
                             <div class="vid-info">
@@ -57,7 +57,7 @@
                             <img src="../public/img/eshare.png" class="share">
                             <img src="../public/img/esubscribe.png" class="subscribe">
                         </div>
-                    </div>
+                    </div> -->
                     <div class="description">
                         <p class="description-text">When in the Course of human events, it becomes necessary for one people to dissolve the political bands which have connected them with another, and to assume among the powers of the earth, the separate and equal station to which the Laws of Nature and of Nature's God entitle them, a decent respect to the opinions of mankind requires that they should declare the causes which impel them to the separation.
 
@@ -127,7 +127,7 @@ We, therefore, the Representatives of the united States of America, in General C
                         </div>
                     </div>
                     <hr>
-                    <h4>Comments</h4>
+                    <!-- <h4>Comments</h4>
                     <div class="add-comment flex-div">
                         <img src="../public/img/eprofile.png">
                         <input type="text" placeholder="Write comments...">
@@ -142,8 +142,8 @@ We, therefore, the Representatives of the united States of America, in General C
                                 <a href="">All replies</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="comments">
+                    </div> -->
+                    <!-- <div class="comments">
                         <img src="../public/img/eprofile.png">
                         <div>
                             <h3>Profile Name 2 &bull; 1 day ago</h3>
@@ -153,57 +153,17 @@ We, therefore, the Representatives of the united States of America, in General C
                                 <a href="">All replies</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="right-sidebar">
+                    <%videos.forEach((video)=>{%>
                     <div class="side-video-list">
                         <a href="" class="small-thumbnail"><img src="../public/img/thumbnail.jpg"></a>
                         <div class="vid-info">
-                            <a href="">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
+                            <a href=""><%=video%></a>
                         </div>
                     </div>
-                    <div class="side-video-list">
-                        <a href="" class="small-thumbnail"><img src="../public/img/thumbnail.jpg"></a>
-                        <div class="vid-info">
-                            <a href="">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
-                        </div>
-                    </div>
-                    <div class="side-video-list">
-                        <a href="" class="small-thumbnail"><img src="../public/img/thumbnail.jpg"></a>
-                        <div class="vid-info">
-                            <a href="">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
-                        </div>
-                    </div>
-                    <div class="side-video-list">
-                        <a href="" class="small-thumbnail"><img src="../public/img/thumbnail.jpg"></a>
-                        <div class="vid-info">
-                            <a href="">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
-                        </div>
-                    </div>
-                    <div class="side-video-list">
-                        <a href="" class="small-thumbnail"><img src="../public/img/thumbnail.jpg"></a>
-                        <div class="vid-info">
-                            <a href="">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
-                        </div>
-                    </div>
-                    <div class="side-video-list">
-                        <a href="" class="small-thumbnail"><img src="../public/img/thumbnail.jpg"></a>
-                        <div class="vid-info">
-                            <a href="">Video Title 1</a>
-                            <p>Profile Name 1</p>
-                            <p>15k views &bull; 2 days</p>
-                        </div>
-                    </div>
+                    <%});%>
                 </div>
             </div>
         </div>
