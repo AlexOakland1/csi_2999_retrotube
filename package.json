@@ -10,6 +10,7 @@
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "^4.17.3",
+    "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^5.0.0",
     "fluent-ffmpeg": "^2.1.2",
     "fs": "^0.0.1-security",
@@ -22,6 +23,7 @@
     "node-ffprobe-installer": "^1.2.3",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3",
-    "tedious": "^14.4.0"
+    "tedious": "^14.4.0",
+    "video-thumb": "^0.0.3"
   }
 }

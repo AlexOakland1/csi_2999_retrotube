@@ -127,7 +127,7 @@ nav{
 }
 .list-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 24% 24% 24% 24%;
     grid-column-gap: 16px;
     grid-row-gap: 30px;
     margin-top: 15px;
@@ -172,10 +172,12 @@ nav{
     flex-basis: 24%;
 }
 .player video{
-    width: 100%;
+    width: 64vw;
+    height: 36vw;
 }
 .side-video-list{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 8px;
 }

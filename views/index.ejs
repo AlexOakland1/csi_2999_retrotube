@@ -54,7 +54,7 @@
             <div class="list-container">
                 <%videos.forEach((video)=>{%>
                 <div class="vid-list">
-                    <a href="/player?file=<%=video%>"><img src="../public/img/thumbnail.jpg" class="thumbnail"></a>
+                    <a href="/player?file=<%=video%>"><img src="../public/img/<%=video%>.png" class="thumbnail"></a>
                     <div class="flex-div">
                         <div class="vid-info">
                             <a href="/player?file=<%=video%>"><%=video%></a>

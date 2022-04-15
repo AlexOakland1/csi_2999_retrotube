@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var fs = require('fs');
+var thumbler = require('video-thumb');
 // var videos = fs.readdirSync('./public/videos');
 // console.log(videos);
 
@@ -57,8 +58,14 @@ app.get("/upload", (req, res) => {
 
 //upload file api
 app.post("/uploadthis", upload.single('UploadVideo'), (req, res) => {
-  var videos = fs.readdirSync('./public/videos');
-  res.render("index", {videos: videos});
+  console.log('./public/videos/' + req.file.filename);
+  thumbler.extract('./public/videos/' + req.file.filename, './public/img/' + req.file.filename + '.png', '00:00:01', '640x360', function(){
+    console.log('snapshot saved to ' + './public/img/' + req.file.filename + '.png' + ' (640x360) with a frame at 00:00:01');
+  });
+  setTimeout(function(){
+    var videos = fs.readdirSync('./public/videos');
+    res.render("index", {videos: videos});
+  },500);
 });
 
 // catch 404 and forward to error handler

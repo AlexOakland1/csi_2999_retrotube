@@ -158,9 +158,9 @@ We, therefore, the Representatives of the united States of America, in General C
                 <div class="right-sidebar">
                     <%videos.forEach((video)=>{%>
                     <div class="side-video-list">
-                        <a href="" class="small-thumbnail"><img src="../public/img/thumbnail.jpg"></a>
+                        <a href="/player?file=<%=video%>" class="small-thumbnail"><img src="../public/img/<%=video%>.png"></a>
                         <div class="vid-info">
-                            <a href=""><%=video%></a>
+                            <a href="/player?file=<%=video%>"><%=video%></a>
                         </div>
                     </div>
                     <%});%>
